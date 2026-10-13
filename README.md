@@ -2,6 +2,12 @@
 
 Create environments to allow shadowing and capturing variables.
 
+## Building
+```sh
+make
+```
+compiles `src/main.c` into a `main` executable file showcasing examples of how to use the environments.
+
 ## Example
 ```ml
 let x = 1 in

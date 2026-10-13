@@ -1,3 +1,5 @@
+CC=cc
+
 SRC=./src
 MAIN=main
 
@@ -5,7 +7,7 @@ MAIN=main
 all: $(MAIN)
 
 $(MAIN): $(SRC)/$(MAIN).c
-	clang -Wall -Wextra $< -o $@
+	$(CC) -Wall -Wextra $< -o $@
 
 clean:
 	rm -frv $(MAIN)
