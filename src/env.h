@@ -185,7 +185,7 @@ Symbol env__bind_fun(Environment *env, const char *fun_name, Fn_t fun)
 }
 
 #define env_bind_var(env, var, val) env__bind_var(env, #var, val)
-#define env_bind_fun(env, fun)      env__bind_fun(env, #fun, fun)
+#define env_bind_fun(env, fun, val) env__bind_fun(env, #fun, val)
 
 #define env_get_var(env, var) env__get_symbol(env, #var, SYM_VAR)
 #define env_get_fun(env, fun) env__get_symbol(env, #fun, SYM_FUN)

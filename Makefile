@@ -6,7 +6,7 @@ MAIN=main
 .PHONY: all clean
 all: $(MAIN)
 
-$(MAIN): $(SRC)/$(MAIN).c
+$(MAIN): $(SRC)/$(MAIN).c $(SRC)/env.h
 	$(CC) -Wall -Wextra $< -o $@
 
 clean:

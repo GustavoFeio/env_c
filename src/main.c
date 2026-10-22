@@ -11,7 +11,7 @@ int thunk_0(int y, Environment *env)
 
 int thunk_1(int y, Environment *env)
 {
-	Symbol f1 = env_get_fun(env, thunk_0);
+	Symbol f1 = env_get_fun(env, f1);
 	return f1.as_fun(y, f1.env) * env_get_var(env, x).as_var;
 }
 
@@ -34,13 +34,13 @@ void example_1(void)
 	Environment *env = env_new();
 	env_bind_var(env, x, 1);
 	env = env_push(env);
-		Symbol f1 = env_bind_fun(env, thunk_0);
+		Symbol f1 = env_bind_fun(env, f1, thunk_0);
 		env = env_push(env);
 			env_bind_var(env, x, 2);
 			env = env_push(env);
-				Symbol f2 = env_bind_fun(env, thunk_1);
+				Symbol f2 = env_bind_fun(env, f2, thunk_1);
 				env = env_push(env);
-					Symbol twice = env_bind_fun(env, thunk_2);
+					Symbol twice = env_bind_fun(env, twice, thunk_2);
 					int res = twice.as_fun(f1, 0, twice.env) + twice.as_fun(f2, 0, twice.env);
 					printf("%d\n", res);
 				env = env_pop(env);
@@ -83,7 +83,7 @@ void example_3(void)
 	env_bind_var(env, y, env_get_var(env, x).as_var + 2);
 	env = env_push(env);
 		env_bind_var(env, x, 9);
-		Symbol f1 = env_bind_fun(env, thunk_0);
+		Symbol f1 = env_bind_fun(env, f1, thunk_0);
 
 		int res = f1.as_fun(env_get_var(env, y).as_var, f1.env);
 		printf("%d\n", res);
